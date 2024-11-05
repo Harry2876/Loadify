@@ -1,0 +1,11 @@
+<!-- res/values/attrs.xml -->
+<resources>
+    <declare-styleable name="CircularLoaderView">
+        <attr name="loaderColor" format="color" />
+        <attr name="loaderSize" format="dimension" />
+        <attr name="loaderSpeed" format="integer" />
+        <attr name="strokeWidth" format="dimension" />
+    </declare-styleable>
+
+
+</resources>
