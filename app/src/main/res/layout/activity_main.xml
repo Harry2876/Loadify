@@ -14,7 +14,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="188dp"
         android:layout_marginBottom="393dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,12 +26,22 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="176dp"
-        app:lsSize="30dp"
-        app:lsColor="#03A9F4"
-        app:lsStroke="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lsColor="#03A9F4"
+        app:lsSize="30dp"
+        app:lsStroke="4dp" />
+
+    <!-- layout.xml -->
+    <com.example.customloaders.TailChaseSpinner
+        android:id="@+id/tailChaseSpinner"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
