@@ -41,6 +41,9 @@
         android:layout_height="100dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="68dp"
+        app:tsSize="50dp"
+        app:tsDotColor="#F44336"
+        app:tsDotSizePercentage="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

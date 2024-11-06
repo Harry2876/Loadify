@@ -13,4 +13,10 @@
             <attr name="lsStroke" format="dimension" />
         </declare-styleable>
 
+    <declare-styleable name="TailChaseSpinner">
+        <attr name="tsSize" format="dimension"/>
+        <attr name="tsDotColor" format="color"/>
+        <attr name="tsDotSizePercentage" format="float"/>
+    </declare-styleable>
+
 </resources>

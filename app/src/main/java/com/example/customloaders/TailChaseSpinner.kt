@@ -24,7 +24,6 @@ class TailChaseSpinner @JvmOverloads constructor(
 
     // Paint object for dots
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = dotColor
         style = Paint.Style.FILL
     }
 
@@ -33,6 +32,18 @@ class TailChaseSpinner @JvmOverloads constructor(
     private val dotAnimators = mutableListOf<ValueAnimator>()
 
     init {
+        // Read custom attributes from XML
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(it, R.styleable.TailChaseSpinner, 0, 0)
+            loaderSize = typedArray.getDimension(R.styleable.TailChaseSpinner_tsSize, loaderSize)
+            dotColor = typedArray.getColor(R.styleable.TailChaseSpinner_tsDotColor, dotColor)
+            val dotSizePercentage = typedArray.getFloat(R.styleable.TailChaseSpinner_tsDotSizePercentage, 0.15f)
+            dotSize = loaderSize * dotSizePercentage
+            typedArray.recycle()
+        }
+
+        paint.color = dotColor
+
         setupAnimators()
     }
 
