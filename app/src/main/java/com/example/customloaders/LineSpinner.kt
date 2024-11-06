@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.animation.ValueAnimator
+import android.view.animation.LinearInterpolator
 
 class LineSpinnerView @JvmOverloads constructor(
     context: Context,
@@ -12,33 +13,27 @@ class LineSpinnerView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private var loaderSize = 110f // Hardcoded loader size
-    private var loaderColor = Color.WHITE // Hardcoded loader color
-    private var loaderStroke = 10f // Hardcoded loader stroke width
-    private var bars = 35 // Hardcoded number of bars
-    private var paint: Paint = Paint()
-    private var currentBar = 1
-
-    init {
-        paint.color = loaderColor
-        paint.style = Paint.Style.FILL
-        paint.isAntiAlias = true
-
-        // Set a repeating runnable to update the current bar
-        postDelayed(object : Runnable {
-            override fun run() {
-                currentBar = (currentBar + 4) % bars
-                postInvalidateOnAnimation() // Redraw the view
-                postDelayed(this, 45) // Set delay for the next update
-            }
-         }, 100)
+    private var loaderSize = 110f
+    private var loaderColor = Color.WHITE
+    private var loaderStroke = 14f
+    private var bars = 15
+    private val paint: Paint = Paint().apply {
+        color = loaderColor
+        style = Paint.Style.FILL
+        isAntiAlias = true
     }
 
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
+    private val barPositions = mutableListOf<BarPosition>() // Precompute bar positions
+    private var animator: ValueAnimator? = null
+    private var animatedProgress = 5f
 
+    init {
+        calculateBarPositions() // Calculate positions only once
+        setupAnimator()
+    }
+
+    private fun calculateBarPositions() {
         val radius = loaderSize / 2f
-
         for (i in 0 until bars) {
             val angle = i * 360 / bars
             val rect = RectF(
@@ -47,33 +42,46 @@ class LineSpinnerView @JvmOverloads constructor(
                 radius + loaderStroke / 2,
                 loaderSize * 0.22f
             )
+            barPositions.add(BarPosition(angle, rect))
+        }
+    }
 
-            // Create a rounded rectangle for the bar
-            val roundedRect = RectF(
-                rect.left,
-                rect.top,
-                rect.right,
-                rect.bottom
-            )
-            val cornerRadius = loaderStroke / 2 // Use half the stroke for rounded corners
-
-
-
-
-            // Set alpha based on the current animated bar
-            paint.alpha = when {
-                i == currentBar -> 275// Fully visible for the current bar
-                i == (currentBar + 4) % bars -> (255 * 0.5).toInt() // Slightly faded for the next bar
-                else -> 0 // Fully transparent for all other bars
+    private fun setupAnimator() {
+        animator = ValueAnimator.ofFloat(0f, bars.toFloat()).apply {
+            duration = 1000L
+            repeatCount = ValueAnimator.INFINITE
+            interpolator = LinearInterpolator()
+            addUpdateListener { animation ->
+                animatedProgress = animation.animatedValue as Float
+                invalidate() // Trigger redraw with updated alpha
             }
+            start()
+        }
+    }
 
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        val radius = loaderSize / 2f
+
+        for ((index, bar) in barPositions.withIndex()) {
+            // Calculate alpha based on the distance from the animated progress
+            val distanceFromProgress = (animatedProgress - index + bars) % bars + 3.5
+            val normalizedDistance = distanceFromProgress / bars.toFloat()
+
+            paint.alpha = (255 * (1 - normalizedDistance)).toInt().coerceIn(0, 255)
 
             canvas.save()
-            canvas.rotate(angle.toFloat(), radius, radius)
-
-
-            canvas.drawRoundRect(roundedRect, cornerRadius, cornerRadius, paint)
+            canvas.rotate(bar.angle.toFloat(), radius, radius)
+            canvas.drawRoundRect(bar.rect, loaderStroke / 2, loaderStroke / 2, paint)
             canvas.restore()
         }
     }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        animator?.cancel()
+    }
+
+    // Data class to store bar position information
+    private data class BarPosition(val angle: Int, val rect: RectF)
 }
