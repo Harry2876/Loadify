@@ -18,7 +18,6 @@ class LineSpinnerView @JvmOverloads constructor(
     private var loaderStroke = 14f
     private var bars = 15
     private val paint: Paint = Paint().apply {
-        color = loaderColor
         style = Paint.Style.FILL
         isAntiAlias = true
     }
@@ -28,6 +27,19 @@ class LineSpinnerView @JvmOverloads constructor(
     private var animatedProgress = 5f
 
     init {
+        //setting up xml attributes
+        context.theme.obtainStyledAttributes(attrs, R.styleable.LineSpinnerView, 0, 0).apply {
+            try {
+                loaderSize = getDimension(R.styleable.LineSpinnerView_lsSize, loaderSize)
+                loaderColor = getColor(R.styleable.LineSpinnerView_lsColor, loaderColor)
+                loaderStroke = getDimension(R.styleable.LineSpinnerView_lsStroke, loaderStroke)
+            } finally {
+                recycle()
+            }
+        }
+
+        paint.color = loaderColor
+
         calculateBarPositions() // Calculate positions only once
         setupAnimator()
     }

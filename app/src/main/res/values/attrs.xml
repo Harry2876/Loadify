@@ -8,8 +8,9 @@
     </declare-styleable>
 
         <declare-styleable name="LineSpinnerView">
-            <attr name="spinnerColor" format="color" />
-            <attr name="spinnerSpeed" format="integer" />
+            <attr name="lsSize" format="dimension" />
+            <attr name="lsColor" format="color" />
+            <attr name="lsStroke" format="dimension" />
         </declare-styleable>
 
 </resources>
