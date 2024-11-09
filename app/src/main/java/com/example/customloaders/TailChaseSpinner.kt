@@ -1,5 +1,3 @@
-// TailChaseSpinner.kt
-
 package com.example.customloaders
 
 import android.animation.ValueAnimator

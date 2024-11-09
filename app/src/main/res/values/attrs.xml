@@ -19,4 +19,9 @@
         <attr name="tsDotSizePercentage" format="float"/>
     </declare-styleable>
 
+    <declare-styleable name="ThreeDotsPyramid">
+        <attr name="tdpLoaderSize" format="dimension"/>
+        <attr name="tdpDotColor" format="color"/>
+    </declare-styleable>
+
 </resources>
