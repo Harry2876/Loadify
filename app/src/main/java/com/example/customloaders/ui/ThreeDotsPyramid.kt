@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.example.customloaders.R
 
 class ThreeDotsPyramid @JvmOverloads constructor(
     context: Context,
@@ -83,8 +84,8 @@ class ThreeDotsPyramid @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val centerX = loaderSize / 2f
-        val centerY = loaderSize / 2f
+        val centerX = width / 2f
+        val centerY = height / 2f
 
         // Rotate the canvas to apply rotation to all dots as a group
         canvas.save()

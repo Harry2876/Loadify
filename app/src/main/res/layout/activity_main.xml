@@ -1,96 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fffcf2"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="526dp"
+            android:text="Android Loader Balls"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:listitem="@layout/item_loader" />
 
 
-    <com.example.customloaders.CircularLoaderView
-        android:id="@+id/circularLoader"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginBottom="393dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:circle_color="#F44337"
-        app:circle_speed="800"
-        app:circle_size="5dp"
-        app:circle_stroke="6dp"/>
-
-    <com.example.customloaders.LineSpinnerView
-        android:id="@+id/lineSpinnerView"
-        android:layout_width="59dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="176dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:line_color="#FF5722"
-        app:line_size="40dp"
-        app:line_stroke="4dp" />
-
-    <!-- layout.xml -->
-    <com.example.customloaders.TailChaseSpinner
-        android:id="@+id/tailChaseSpinner"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="212dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:spinner_color ="#F44336"
-        app:spinner_dot_size="0.2"
-        app:spinner_size="50dp" />
-
-    <!-- res/layout/activity_main.xml -->
-    <com.example.customloaders.ThreeDotsPyramid
-        android:id="@+id/threeDotsPyramid2"
-        android:layout_width="117dp"
-        android:layout_height="97dp"
-        android:layout_marginBottom="95dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tailChaseSpinner"
-        app:pyramid_color="#F44336"
-        app:pyramid_size="100dp"/>
-
-    <com.example.customloaders.DotPulse
-        android:id="@+id/dotPulse"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:dot_color="#F44336"
-        app:dot_count="3"
-        app:dot_size="15dp"
-        app:dot_spacing="2dp"
-        app:dot_speed="500"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="104dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.example.customloaders.Particle
-        android:id="@+id/particle6"
-        android:layout_width="56dp"
-        android:layout_height="55dp"
-       app:particle_bright_color="#F44336"
-        app:particle_light_color="@color/white"
-        app:particle_count="30"
-        app:particle_radius="3dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="31dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tailChaseSpinner"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

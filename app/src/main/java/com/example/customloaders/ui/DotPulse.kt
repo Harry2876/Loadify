@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.example.customloaders.R
 
 class DotPulse @JvmOverloads constructor(
     context: Context,
@@ -95,29 +96,29 @@ class DotPulse @JvmOverloads constructor(
     }
 
     // Public methods to allow programmatic updates
-    fun setDpColor(color: Int) {
+    fun setDotColor(color: Int) {
         dpColor = color
         paint.color = color
         invalidate()
     }
 
-    fun setDpSize(size: Float) {
+    fun setDotSize(size: Float) {
         dpSize = size
         invalidate()
     }
 
-    fun setDpSpacing(spacing: Float) {
+    fun setDotSpacing(spacing: Float) {
         dpSpacing = spacing
         invalidate()
     }
 
-    fun setDpDotsNum(count: Int) {
+    fun setDotCount(count: Int) {
         dpDotsNum = count
         dotScales = FloatArray(dpDotsNum) { 0f }
         startAnimation()
     }
 
-    fun setDpSpeed(speed: Long) {
+    fun setDotSpeed(speed: Long) {
         dpSpeed = speed
         startAnimation()
     }

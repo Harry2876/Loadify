@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.example.customloaders.R
 import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sin
@@ -23,23 +24,23 @@ class Particle @JvmOverloads constructor(
     private var pcLightColor = 0x806495ED.toInt() // Default light color
     private var pcCount = 20 // Default particle count
     private var pcRadius = 10f // Default particle radius
-    private var pcMovementRange = 50f // Default movement range
+    private var pcMovementRange = 60f // Default movement range
     private val particles = mutableListOf<ParticleData>()
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private lateinit var animator: ValueAnimator
 
     init {
         // Read custom attributes
-        context.theme.obtainStyledAttributes(attrs, R.styleable.Particle, 0, 0).apply {
-            try {
-                pcBrightColor = getColor(R.styleable.Particle_particle_bright_color, pcBrightColor)
-                pcLightColor = getColor(R.styleable.Particle_particle_light_color, pcLightColor)
-                pcCount = getInt(R.styleable.Particle_particle_count, pcCount)
-                pcRadius = getDimension(R.styleable.Particle_particle_radius, pcRadius)
-            } finally {
-                recycle()
-            }
-        }
+//        context.theme.obtainStyledAttributes(attrs, R.styleable.Particle, 0, 0).apply {
+//            try {
+//                pcBrightColor = getColor(R.styleable.Particle_particle_bright_color, pcBrightColor)
+//                pcLightColor = getColor(R.styleable.Particle_particle_light_color, pcLightColor)
+//                pcCount = getInt(R.styleable.Particle_particle_count, pcCount)
+//                pcRadius = getDimension(R.styleable.Particle_particle_radius, pcRadius)
+//            } finally {
+//                recycle()
+//            }
+//        }
         startAnimation()
     }
 
@@ -62,7 +63,7 @@ class Particle @JvmOverloads constructor(
 
     private fun startAnimation() {
         animator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 1500 // Animation duration
+            duration = 1200 // Animation duration
             repeatCount = ValueAnimator.INFINITE
             addUpdateListener {
                 updateParticles()
@@ -73,6 +74,9 @@ class Particle @JvmOverloads constructor(
     }
 
     private fun updateParticles() {
+        val width = measuredWidth.toFloat()
+        val height = measuredHeight.toFloat()
+
         for (particle in particles) {
             // Calculate new position based on direction and speed
             val dx = cos(Math.toRadians(particle.angle.toDouble())).toFloat() * particle.speed
@@ -81,26 +85,24 @@ class Particle @JvmOverloads constructor(
             particle.x += dx
             particle.y += dy
 
-            // Prevent particles from going out of bounds
-            if (particle.x - pcRadius < 0 || particle.x + pcRadius > measuredWidth) {
-                particle.angle = Random.nextFloat() * 360 // Randomize direction
-                particle.x = particle.x.coerceIn(pcRadius, measuredWidth - pcRadius)
-            }
-            if (particle.y - pcRadius < 0 || particle.y + pcRadius > measuredHeight) {
-                particle.angle = Random.nextFloat() * 360 // Randomize direction
-                particle.y = particle.y.coerceIn(pcRadius, measuredHeight - pcRadius)
-            }
+            // Ensure the bounds for coerceIn are valid
+            val minX = pcRadius
+            val maxX = (width - pcRadius).coerceAtLeast(minX) // Prevent maxX < minX
+            val minY = pcRadius
+            val maxY = (height - pcRadius).coerceAtLeast(minY) // Prevent maxY < minY
 
-            // Prevent excessive spacing during animation
+            // Constrain particle within bounds
+            particle.x = particle.x.coerceIn(minX, maxX)
+            particle.y = particle.y.coerceIn(minY, maxY)
+
+            // Ensure particles stay close to their starting position
             val distanceFromStart = sqrt((particle.x - particle.startX).pow(2) + (particle.y - particle.startY).pow(2))
-            if (distanceFromStart > pcMovementRange) {
-                particle.angle = Random.nextFloat() * 360
-                particle.x = (particle.startX + dx).coerceIn(pcRadius, measuredWidth - pcRadius)
-                particle.y = (particle.startY + dy).coerceIn(pcRadius, measuredHeight - pcRadius)
+            if (distanceFromStart > pcMovementRange ) {
+                particle.angle = Random.nextFloat() * 760 // Randomize direction
             }
-            particle.angle = (particle.angle + 360) % 360
         }
     }
+
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
@@ -120,26 +122,26 @@ class Particle @JvmOverloads constructor(
         super.onDetachedFromWindow()
         animator.cancel() // Stop the animator when the view is detached
     }
-
-    fun setBrightColor(color: Int) {
-        pcBrightColor = color
-        regenerateParticles()
-    }
-
-    fun setLightColor(color: Int) {
-        pcLightColor = color
-        regenerateParticles()
-    }
-
-    fun setParticleCount(count: Int) {
-        pcCount = count
-        regenerateParticles()
-    }
-
-    fun setParticleRadius(radius: Float) {
-        pcRadius = radius
-        regenerateParticles()
-    }
+//
+//    fun setBrightColor(color: Int) {
+//        pcBrightColor = color
+//        regenerateParticles()
+//    }
+//
+//    fun setLightColor(color: Int) {
+//        pcLightColor = color
+//        regenerateParticles()
+//    }
+//
+//    fun setParticleCount(count: Int) {
+//        pcCount = count
+//        regenerateParticles()
+//    }
+//
+//    fun setParticleRadius(radius: Float) {
+//        pcRadius = radius
+//        regenerateParticles()
+//    }
 
 
     // Helper methods to regenerate particles and restart animation

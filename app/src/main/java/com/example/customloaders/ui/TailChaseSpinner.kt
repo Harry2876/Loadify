@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.example.customloaders.R
 
 class TailChaseSpinner @JvmOverloads constructor(
     context: Context,
@@ -66,8 +67,8 @@ class TailChaseSpinner @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val centerX = loaderSize / 2f
-        val centerY = loaderSize / 2f
+        val centerX = width / 2f
+        val centerY = height / 2f
         val radius = loaderSize * 0.4f // Radius of the circular path for dots
 
         // Apply initial rotation offset so the first dot starts at the top (90°)

@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -6,7 +6,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.core.content.ContextCompat
+import com.example.customloaders.R
 
 class CircularLoaderView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyle: Int = 0
@@ -63,7 +63,7 @@ class CircularLoaderView @JvmOverloads constructor(
         canvas.rotate(rotationDegree, width / 2f, height / 2f)
 
         // Draw a circular arc around the center of the view
-        val radius = (width / 2f) - (paint.strokeWidth / 2)
+        val radius = (loaderSize / 2f) - (paint.strokeWidth / 2)
         canvas.drawCircle(width / 2f, height / 2f, radius, paint)
 
         canvas.restore()
@@ -106,33 +106,34 @@ class CircularLoaderView @JvmOverloads constructor(
     }
 
     //Adding getters and setters for custom properties
-    fun setLoaderColor(color: Int) {
+    fun setCircleColor(color: Int) {
         loaderColor = color
         invalidate()
     }
 
-    fun getLoaderColor(): Int = loaderColor
+    fun getCircleColor(): Int = loaderColor
 
-    fun setLoaderSize(size: Float) {
+    fun setCircleSize(size: Float) {
         loaderSize = size
         requestLayout() // Adjust layout to accommodate size change
+        invalidate()
     }
 
-    fun getLoaderSize(): Float = loaderSize
+    fun getCircleSize(): Float = loaderSize
 
-    fun setLoaderSpeed(speed: Int) {
+    fun setCircleSpeed(speed: Int) {
         loaderSpeed = speed
         startRotationAnimation() // Restart animation with new speed
     }
 
-    fun getLoaderSpeed(): Int = loaderSpeed
+    fun getCircleSpeed(): Int = loaderSpeed
 
-    fun setStrokeWidth(width: Float) {
+    fun setCircleStroke(width: Float) {
         strokeWidth = width
         paint.strokeWidth = width
         invalidate()
     }
 
-    fun getStrokeWidth(): Float = strokeWidth
+    fun setCircleStroke(): Float = strokeWidth
 
 }

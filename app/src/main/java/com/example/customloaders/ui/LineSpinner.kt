@@ -1,4 +1,4 @@
-package com.example.customloaders
+package com.example.customloaders.ui
 
 import android.content.Context
 import android.graphics.*
@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.animation.ValueAnimator
 import android.view.animation.LinearInterpolator
+import com.example.customloaders.R
 
 class LineSpinnerView @JvmOverloads constructor(
     context: Context,
@@ -74,7 +75,14 @@ class LineSpinnerView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+        val centerX = width / 2f
+        val centerY = height / 2f
         val radius = loaderSize / 2f
+
+        // Translate the canvas to center the loader
+        canvas.save()
+        canvas.translate(centerX - radius, centerY - radius)
 
         for ((index, bar) in barPositions.withIndex()) {
             // Calculate alpha based on the distance from the animated progress
