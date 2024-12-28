@@ -18,6 +18,7 @@ class LineSpinnerView @JvmOverloads constructor(
     private var loaderColor = Color.WHITE
     private var loaderStroke = 14f
     private var bars = 15
+    private var lineSpeed = 800L
     private val paint: Paint = Paint().apply {
         style = Paint.Style.FILL
         isAntiAlias = true
@@ -34,6 +35,7 @@ class LineSpinnerView @JvmOverloads constructor(
                 loaderSize = getDimension(R.styleable.LineSpinnerView_line_size, loaderSize)
                 loaderColor = getColor(R.styleable.LineSpinnerView_line_color, loaderColor)
                 loaderStroke = getDimension(R.styleable.LineSpinnerView_line_stroke, loaderStroke)
+                lineSpeed = getInt(R.styleable.LineSpinnerView_line_speed, lineSpeed.toInt()).toLong()
             } finally {
                 recycle()
             }
@@ -62,7 +64,7 @@ class LineSpinnerView @JvmOverloads constructor(
 
     private fun setupAnimator() {
         animator = ValueAnimator.ofFloat(0f, bars.toFloat()).apply {
-            duration = 1000L
+            duration = lineSpeed
             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
             addUpdateListener { animation ->
@@ -120,6 +122,11 @@ class LineSpinnerView @JvmOverloads constructor(
         loaderStroke = stroke
         calculateBarPositions()
         invalidate()
+    }
+
+    fun setLoaderSpeed(speed : Long) {
+        lineSpeed = speed
+        setupAnimator()
     }
 
     // Data class to store bar position information

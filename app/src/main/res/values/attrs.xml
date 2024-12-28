@@ -10,6 +10,7 @@
         <attr name="line_size" format="dimension" />
         <attr name="line_color" format="color" />
         <attr name="line_stroke" format="dimension" />
+        <attr name="line_speed" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="TailChaseSpinner">

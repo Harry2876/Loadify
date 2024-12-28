@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 setLoaderColor(Color.BLUE)
                 setLoaderSize(100f)
                 setLoaderStroke(10f)
+                setLoaderSpeed(500)
             }),
             LoaderItem("Tail Chase Spinner", TailChaseSpinner(this).apply {
                 setSpinnerColor(Color.GREEN)
