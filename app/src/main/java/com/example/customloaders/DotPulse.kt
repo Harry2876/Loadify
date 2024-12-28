@@ -15,24 +15,40 @@ class DotPulse @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    // Properties
-    private val dotColor = Color.WHITE // Dot color
-    private val dotSize = 40f // Size of each dot
-    private val dotSpacing = 0f // Spacing between dots
-    private val numDots = 3 // Number of dots
-    private val animationDuration = 400L // Duration of the pulse animation
+    // Default Properties
+    private var dpColor = Color.WHITE // Dot color
+    private var dpSize = 40f // Size of each dot
+    private var dpSpacing = 20f // Spacing between dots
+    private var dpDotsNum = 3 // Number of dots
+    private var dpSpeed = 400L // Duration of the pulse animation in milliseconds
 
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = dotColor
-        style = Paint.Style.FILL
-    }
-
-    private val dotScales = FloatArray(numDots) { 0f } // Scale for each dot
+    private lateinit var dotScales: FloatArray // Scale for each dot
     private val dotAnimators = mutableListOf<ValueAnimator>() // List of animators for each dot
 
     init {
+        // Read custom attributes from XML
+        context.theme.obtainStyledAttributes(attrs, R.styleable.DotPulse, 0, 0).apply {
+            try {
+                dpColor = getColor(R.styleable.DotPulse_dot_color, dpColor)
+                dpSize = getDimension(R.styleable.DotPulse_dot_size, dpSize)
+                dpSpacing = getDimension(R.styleable.DotPulse_dot_spacing, dpSpacing)
+                dpDotsNum = getInt(R.styleable.DotPulse_dot_count, dpDotsNum)
+                dpSpeed = getInteger(R.styleable.DotPulse_dot_speed, dpSpeed.toInt()).toLong()
+            } finally {
+                recycle()
+            }
+        }
+
+        // Initialize dot scales
+        dotScales = FloatArray(dpDotsNum) { 0f }
         startAnimation()
     }
+
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = dpColor
+        style = Paint.Style.FILL
+    }
+
 
     // Start the animation for all dots
     private fun startAnimation() {
@@ -40,10 +56,10 @@ class DotPulse @JvmOverloads constructor(
         dotAnimators.forEach { it.cancel() }
         dotAnimators.clear()
 
-        for (i in 0 until numDots) {
+        for (i in 0 until dpDotsNum) {
             val animator = ValueAnimator.ofFloat(0f, 1f).apply {
-                duration = animationDuration
-                startDelay = i * (animationDuration / numDots) // Stagger animation start for each dot
+                duration = dpSpeed
+                startDelay = i * (dpSpeed / dpDotsNum) // Stagger animation start for each dot
                 repeatCount = ValueAnimator.INFINITE
                 repeatMode = ValueAnimator.REVERSE // Reverse to create a pulse effect
                 interpolator = LinearInterpolator() // Linear interpolation for smooth animation
@@ -61,14 +77,14 @@ class DotPulse @JvmOverloads constructor(
         super.onDraw(canvas)
 
         // Calculate the starting X position for the dots (center them)
-        val totalWidth = (dotSize * numDots) + (dotSpacing * (numDots - 1))
+        val totalWidth = (dpSize * dpDotsNum) + (dpSpacing * (dpDotsNum - 1))
         val startX = (width - totalWidth) / 2f
         val centerY = height / 2f
 
-        for (i in 0 until numDots) {
-            val x = startX + i * (dotSize + dotSpacing)
+        for (i in 0 until dpDotsNum) {
+            val x = startX + i * (dpSize + dpSpacing)
             val scale = dotScales[i]
-            canvas.drawCircle(x, centerY, (dotSize / 2) * scale, paint)
+            canvas.drawCircle(x, centerY, (dpSize / 2) * scale, paint)
         }
     }
 
@@ -76,5 +92,33 @@ class DotPulse @JvmOverloads constructor(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         dotAnimators.forEach { it.cancel() } // Cancel all animators
+    }
+
+    // Public methods to allow programmatic updates
+    fun setDpColor(color: Int) {
+        dpColor = color
+        paint.color = color
+        invalidate()
+    }
+
+    fun setDpSize(size: Float) {
+        dpSize = size
+        invalidate()
+    }
+
+    fun setDpSpacing(spacing: Float) {
+        dpSpacing = spacing
+        invalidate()
+    }
+
+    fun setDpDotsNum(count: Int) {
+        dpDotsNum = count
+        dotScales = FloatArray(dpDotsNum) { 0f }
+        startAnimation()
+    }
+
+    fun setDpSpeed(speed: Long) {
+        dpSpeed = speed
+        startAnimation()
     }
 }

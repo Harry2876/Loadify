@@ -17,22 +17,23 @@
         android:layout_marginBottom="393dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:loaderColor="#E12A2A"
-        app:loaderSpeed="1100"
-        app:strokeWidth="5dp" />
+        app:circle_color="#F44337"
+        app:circle_speed="800"
+        app:circle_size="5dp"
+        app:circle_stroke="6dp"/>
 
     <com.example.customloaders.LineSpinnerView
         android:id="@+id/lineSpinnerView"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
+        android:layout_width="59dp"
+        android:layout_height="62dp"
         android:layout_marginTop="176dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lsColor="#03A9F4"
-        app:lsSize="30dp"
-        app:lsStroke="4dp" />
+        app:line_color="#FF5722"
+        app:line_size="40dp"
+        app:line_stroke="4dp" />
 
     <!-- layout.xml -->
     <com.example.customloaders.TailChaseSpinner
@@ -44,9 +45,9 @@
         android:layout_marginEnd="212dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tsDotColor="#F44336"
-        app:tsDotSizePercentage="0.2"
-        app:tsSize="50dp" />
+        app:spinner_color ="#F44336"
+        app:spinner_dot_size="0.2"
+        app:spinner_size="50dp" />
 
     <!-- res/layout/activity_main.xml -->
     <com.example.customloaders.ThreeDotsPyramid
@@ -59,13 +60,18 @@
         app:layout_constraintHorizontal_bias="0.993"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tailChaseSpinner"
-        app:tdpDotColor="@color/white"
-        app:tdpLoaderSize="100dp" />
+        app:pyramid_color="#F44336"
+        app:pyramid_size="100dp"/>
 
     <com.example.customloaders.DotPulse
         android:id="@+id/dotPulse"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        app:dot_color="#F44336"
+        app:dot_count="3"
+        app:dot_size="15dp"
+        app:dot_spacing="2dp"
+        app:dot_speed="500"
         android:layout_centerInParent="true"
         android:layout_marginStart="68dp"
         android:layout_marginBottom="104dp"
@@ -76,6 +82,10 @@
         android:id="@+id/particle6"
         android:layout_width="56dp"
         android:layout_height="55dp"
+       app:particle_bright_color="#F44336"
+        app:particle_light_color="@color/white"
+        app:particle_count="30"
+        app:particle_radius="3dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="31dp"
         app:layout_constraintEnd_toEndOf="parent"

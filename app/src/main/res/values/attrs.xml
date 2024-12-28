@@ -1,27 +1,40 @@
-<!-- res/values/attrs.xml -->
 <resources>
     <declare-styleable name="CircularLoaderView">
-        <attr name="loaderColor" format="color" />
-        <attr name="loaderSize" format="dimension" />
-        <attr name="loaderSpeed" format="integer" />
-        <attr name="strokeWidth" format="dimension" />
+        <attr name="circle_color" format="color" />
+        <attr name="circle_size" format="dimension" />
+        <attr name="circle_speed" format="integer" />
+        <attr name="circle_stroke" format="dimension" />
     </declare-styleable>
 
-        <declare-styleable name="LineSpinnerView">
-            <attr name="lsSize" format="dimension" />
-            <attr name="lsColor" format="color" />
-            <attr name="lsStroke" format="dimension" />
-        </declare-styleable>
+    <declare-styleable name="LineSpinnerView">
+        <attr name="line_size" format="dimension" />
+        <attr name="line_color" format="color" />
+        <attr name="line_stroke" format="dimension" />
+    </declare-styleable>
 
     <declare-styleable name="TailChaseSpinner">
-        <attr name="tsSize" format="dimension"/>
-        <attr name="tsDotColor" format="color"/>
-        <attr name="tsDotSizePercentage" format="float"/>
+        <attr name="spinner_size" format="dimension" />
+        <attr name="spinner_color" format="color" />
+        <attr name="spinner_dot_size" format="float" />
     </declare-styleable>
 
     <declare-styleable name="ThreeDotsPyramid">
-        <attr name="tdpLoaderSize" format="dimension"/>
-        <attr name="tdpDotColor" format="color"/>
+        <attr name="pyramid_size" format="dimension" />
+        <attr name="pyramid_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="DotPulse">
+        <attr name="dot_color" format="color" />
+        <attr name="dot_size" format="dimension" />
+        <attr name="dot_spacing" format="dimension" />
+        <attr name="dot_count" format="integer" />
+        <attr name="dot_speed" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="Particle">
+        <attr name="particle_bright_color" format="color" />
+        <attr name="particle_light_color" format="color" />
+        <attr name="particle_count" format="integer" />
+        <attr name="particle_radius" format="dimension" />
+    </declare-styleable>
 </resources>

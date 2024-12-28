@@ -27,12 +27,12 @@ class LineSpinnerView @JvmOverloads constructor(
     private var animatedProgress = 5f
 
     init {
-        //setting up xml attributes
+        // Setting up XML attributes
         context.theme.obtainStyledAttributes(attrs, R.styleable.LineSpinnerView, 0, 0).apply {
             try {
-                loaderSize = getDimension(R.styleable.LineSpinnerView_lsSize, loaderSize)
-                loaderColor = getColor(R.styleable.LineSpinnerView_lsColor, loaderColor)
-                loaderStroke = getDimension(R.styleable.LineSpinnerView_lsStroke, loaderStroke)
+                loaderSize = getDimension(R.styleable.LineSpinnerView_line_size, loaderSize)
+                loaderColor = getColor(R.styleable.LineSpinnerView_line_color, loaderColor)
+                loaderStroke = getDimension(R.styleable.LineSpinnerView_line_stroke, loaderStroke)
             } finally {
                 recycle()
             }
@@ -46,6 +46,7 @@ class LineSpinnerView @JvmOverloads constructor(
 
     private fun calculateBarPositions() {
         val radius = loaderSize / 2f
+        barPositions.clear()
         for (i in 0 until bars) {
             val angle = i * 360 / bars
             val rect = RectF(
@@ -92,6 +93,25 @@ class LineSpinnerView @JvmOverloads constructor(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         animator?.cancel()
+    }
+
+    // Inline functions to update properties
+    fun setLoaderSize(size: Float) {
+        loaderSize = size
+        calculateBarPositions()
+        invalidate()
+    }
+
+    fun setLoaderColor(color: Int) {
+        loaderColor = color
+        paint.color = color
+        invalidate()
+    }
+
+    fun setLoaderStroke(stroke: Float) {
+        loaderStroke = stroke
+        calculateBarPositions()
+        invalidate()
     }
 
     // Data class to store bar position information

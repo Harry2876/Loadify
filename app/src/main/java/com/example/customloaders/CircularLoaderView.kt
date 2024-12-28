@@ -35,9 +35,10 @@ class CircularLoaderView @JvmOverloads constructor(
             0,0
         ).apply {
             try {
-                loaderColor = getColor(R.styleable.CircularLoaderView_loaderColor,loaderColor)
-                loaderSpeed = getInt(R.styleable.CircularLoaderView_loaderSpeed, loaderSpeed)
-                strokeWidth = getDimension(R.styleable.CircularLoaderView_strokeWidth, strokeWidth)
+                loaderColor = getColor(R.styleable.CircularLoaderView_circle_color,loaderColor)
+                loaderSpeed = getInt(R.styleable.CircularLoaderView_circle_speed, loaderSpeed)
+                strokeWidth = getDimension(R.styleable.CircularLoaderView_circle_stroke, strokeWidth)
+                loaderSize = getDimension(R.styleable.CircularLoaderView_circle_size, loaderSize)
             } finally {
                 recycle()
             }

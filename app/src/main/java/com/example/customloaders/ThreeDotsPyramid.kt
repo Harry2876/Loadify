@@ -2,7 +2,6 @@ package com.example.customloaders
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -16,40 +15,45 @@ class ThreeDotsPyramid @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private var loaderSize: Float
-    private var dotColor: Int
-    private var dotSize: Float // Size of each dot
+    private var loaderSize: Float = 200f // Default pyramid size
+    private var dotColor: Int = Color.WHITE // Default dot color
+    private var dotSize: Float = loaderSize * 0.15f // Size of each dot
     private var rotationAngle = 0f // Current rotation angle
-    private var triangleRadius: Float // Initial radius of the triangle
+    private var triangleRadius: Float = loaderSize / 3.5f // Initial radius of the triangle
 
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.FILL
-    }
+    private var rotationAnimator: ValueAnimator? = null
+    private var radiusAnimator: ValueAnimator? = null
 
     init {
-        // Load custom attributes
+        // Load custom attributes from XML
         context.theme.obtainStyledAttributes(attrs, R.styleable.ThreeDotsPyramid, 0, 0).apply {
             try {
-                loaderSize = getDimension(R.styleable.ThreeDotsPyramid_tdpLoaderSize, 200f)
-                dotColor = getColor(R.styleable.ThreeDotsPyramid_tdpDotColor, Color.BLACK)
+                loaderSize = getDimension(R.styleable.ThreeDotsPyramid_pyramid_size, loaderSize)
+                dotColor = getColor(R.styleable.ThreeDotsPyramid_pyramid_color, dotColor)
             } finally {
                 recycle()
             }
         }
 
-        // Initialize paint color
-        paint.color = dotColor
-
-        // Set dot size and triangle radius based on loader size
+        // Update derived values
         dotSize = loaderSize * 0.15f
         triangleRadius = loaderSize / 3.5f
 
         setupAnimators()
     }
 
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
+        color = dotColor
+    }
+
     private fun setupAnimators() {
+        // Cancel previous animators (if any)
+        rotationAnimator?.cancel()
+        radiusAnimator?.cancel()
+
         // Animator for rotating the triangle
-        val rotationAnimator = ValueAnimator.ofFloat(0f, 360f).apply {
+        rotationAnimator = ValueAnimator.ofFloat(0f, 360f).apply {
             duration = 1100L
             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
@@ -60,7 +64,7 @@ class ThreeDotsPyramid @JvmOverloads constructor(
         }
 
         // Animator for expanding and contracting the triangle radius
-        val radiusAnimator = ValueAnimator.ofFloat(triangleRadius * 0.4f, triangleRadius).apply {
+        radiusAnimator = ValueAnimator.ofFloat(triangleRadius * 0.4f, triangleRadius).apply {
             duration = 800L
             repeatCount = ValueAnimator.INFINITE
             repeatMode = ValueAnimator.REVERSE
@@ -71,8 +75,9 @@ class ThreeDotsPyramid @JvmOverloads constructor(
             }
         }
 
-        rotationAnimator.start()
-        radiusAnimator.start()
+        // Start animations
+        rotationAnimator?.start()
+        radiusAnimator?.start()
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -101,5 +106,28 @@ class ThreeDotsPyramid @JvmOverloads constructor(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         // Clean up animations when view is detached
+        rotationAnimator?.cancel()
+        radiusAnimator?.cancel()
+    }
+
+    // Inline setters for runtime updates
+
+    fun setPyramidSize(size: Float) {
+        loaderSize = size
+        dotSize = loaderSize * 0.15f // Adjust dot size proportionally
+        triangleRadius = loaderSize / 3.5f // Adjust triangle radius
+        invalidate() // Redraw with updated size
+        setupAnimators() // Restart animators to reflect size change
+    }
+
+    fun setDotColor(color: Int) {
+        dotColor = color
+        paint.color = dotColor
+        invalidate() // Redraw with updated color
+    }
+
+    fun setDotSize(percentage: Float) {
+        dotSize = loaderSize * percentage
+        invalidate() // Redraw with updated dot size
     }
 }

@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import android.view.animation.LinearInterpolator
 
 class TailChaseSpinner @JvmOverloads constructor(
     context: Context,
@@ -33,10 +32,10 @@ class TailChaseSpinner @JvmOverloads constructor(
         // Read custom attributes from XML
         attrs?.let {
             val typedArray = context.obtainStyledAttributes(it, R.styleable.TailChaseSpinner, 0, 0)
-            loaderSize = typedArray.getDimension(R.styleable.TailChaseSpinner_tsSize, loaderSize)
-            dotColor = typedArray.getColor(R.styleable.TailChaseSpinner_tsDotColor, dotColor)
-            val dotSizePercentage = typedArray.getFloat(R.styleable.TailChaseSpinner_tsDotSizePercentage, 0.15f)
-            dotSize = loaderSize * dotSizePercentage
+            loaderSize = typedArray.getDimension(R.styleable.TailChaseSpinner_spinner_size, loaderSize)
+            dotColor = typedArray.getColor(R.styleable.TailChaseSpinner_spinner_color, dotColor)
+            val spinnerDotSize = typedArray.getFloat(R.styleable.TailChaseSpinner_spinner_dot_size, 0.15f)
+            dotSize = loaderSize * spinnerDotSize
             typedArray.recycle()
         }
 
@@ -46,11 +45,13 @@ class TailChaseSpinner @JvmOverloads constructor(
     }
 
     private fun setupAnimators() {
+        dotAnimators.forEach { it.cancel() }
+        dotAnimators.clear()
+
         for (i in 0 until numDots) {
             val animator = ValueAnimator.ofFloat(0f, 360f).apply {
-                duration = 1600L   // Slightly faster for each dot
+                duration = 1600L // Slightly faster for each dot
                 repeatCount = ValueAnimator.INFINITE
-
                 startDelay = i * 150L // Staggered delay for chasing effect
                 addUpdateListener { animation ->
                     dotProgress[i] = animation.animatedValue as Float
@@ -86,5 +87,24 @@ class TailChaseSpinner @JvmOverloads constructor(
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         dotAnimators.forEach { it.cancel() }
+    }
+
+    // Inline setter methods for dynamic updates
+
+    fun setSpinnerSize(size: Float) {
+        loaderSize = size
+        dotSize = loaderSize * 0.15f // Update dot size proportionally
+        invalidate() // Redraw with updated size
+    }
+
+    fun setSpinnerColor(color: Int) {
+        dotColor = color
+        paint.color = dotColor
+        invalidate() // Redraw with updated color
+    }
+
+    fun setDotSize(percentage: Float) {
+        dotSize = loaderSize * percentage
+        invalidate() // Redraw with updated dot size
     }
 }

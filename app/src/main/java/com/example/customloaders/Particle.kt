@@ -3,7 +3,6 @@ package com.example.customloaders
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
@@ -13,16 +12,34 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
 
-class Particle(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
+class Particle @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
 
+    // Customizable properties with default values
+    private var pcBrightColor = 0xFF6495ED.toInt() // Default bright color
+    private var pcLightColor = 0x806495ED.toInt() // Default light color
+    private var pcCount = 20 // Default particle count
+    private var pcRadius = 10f // Default particle radius
+    private var pcMovementRange = 50f // Default movement range
     private val particles = mutableListOf<ParticleData>()
-    private val particleCount = 20
-    private val particleRadius = 10f
-    private val movementRange = 50f // Limited range to maintain consistent spacing
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private lateinit var animator: ValueAnimator
 
     init {
+        // Read custom attributes
+        context.theme.obtainStyledAttributes(attrs, R.styleable.Particle, 0, 0).apply {
+            try {
+                pcBrightColor = getColor(R.styleable.Particle_particle_bright_color, pcBrightColor)
+                pcLightColor = getColor(R.styleable.Particle_particle_light_color, pcLightColor)
+                pcCount = getInt(R.styleable.Particle_particle_count, pcCount)
+                pcRadius = getDimension(R.styleable.Particle_particle_radius, pcRadius)
+            } finally {
+                recycle()
+            }
+        }
         startAnimation()
     }
 
@@ -30,11 +47,11 @@ class Particle(context: Context, attrs: AttributeSet? = null) : View(context, at
         val width = measuredWidth.coerceAtLeast(1)
         val height = measuredHeight.coerceAtLeast(1)
 
-        for (i in 0 until particleCount) {
-            val x = Random.nextFloat() * (width - particleRadius * 2) + particleRadius
-            val y = Random.nextFloat() * (height - particleRadius * 2) + particleRadius
+        for (i in 0 until pcCount) {
+            val x = Random.nextFloat() * (width - pcRadius * 2) + pcRadius
+            val y = Random.nextFloat() * (height - pcRadius * 2) + pcRadius
             val isBright = Random.nextBoolean()
-            val color = if (isBright) Color.argb(255, 100, 149, 237) else Color.argb(128, 100, 149, 237)
+            val color = if (isBright) pcBrightColor else pcLightColor
 
             // Initialize particle with random position, direction, and speed
             val angle = Random.nextFloat() * 360 // Random direction
@@ -45,7 +62,7 @@ class Particle(context: Context, attrs: AttributeSet? = null) : View(context, at
 
     private fun startAnimation() {
         animator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 2600 // Update every 16ms (~60 FPS)
+            duration = 1500 // Animation duration
             repeatCount = ValueAnimator.INFINITE
             addUpdateListener {
                 updateParticles()
@@ -65,24 +82,22 @@ class Particle(context: Context, attrs: AttributeSet? = null) : View(context, at
             particle.y += dy
 
             // Prevent particles from going out of bounds
-            if (particle.x - particleRadius < 0 || particle.x + particleRadius > measuredWidth) {
-                particle.angle = Random.nextFloat() * 360 // Randomize direction upon collision with width boundary
-                particle.x = particle.x.coerceIn(particleRadius, measuredWidth - particleRadius) // Clamp position
+            if (particle.x - pcRadius < 0 || particle.x + pcRadius > measuredWidth) {
+                particle.angle = Random.nextFloat() * 360 // Randomize direction
+                particle.x = particle.x.coerceIn(pcRadius, measuredWidth - pcRadius)
             }
-            if (particle.y - particleRadius < 0 || particle.y + particleRadius > measuredHeight) {
-                particle.angle = Random.nextFloat() * 360 // Randomize direction upon collision with height boundary
-                particle.y = particle.y.coerceIn(particleRadius, measuredHeight - particleRadius) // Clamp position
+            if (particle.y - pcRadius < 0 || particle.y + pcRadius > measuredHeight) {
+                particle.angle = Random.nextFloat() * 360 // Randomize direction
+                particle.y = particle.y.coerceIn(pcRadius, measuredHeight - pcRadius)
             }
 
             // Prevent excessive spacing during animation
             val distanceFromStart = sqrt((particle.x - particle.startX).pow(2) + (particle.y - particle.startY).pow(2))
-            if (distanceFromStart > movementRange) {
-                particle.angle = Random.nextFloat() * 360 // Change direction to stay close to start
-                particle.x = (particle.startX + dx).coerceIn(particleRadius, measuredWidth - particleRadius)
-                particle.y = (particle.startY + dy).coerceIn(particleRadius, measuredHeight - particleRadius)
+            if (distanceFromStart > pcMovementRange) {
+                particle.angle = Random.nextFloat() * 360
+                particle.x = (particle.startX + dx).coerceIn(pcRadius, measuredWidth - pcRadius)
+                particle.y = (particle.startY + dy).coerceIn(pcRadius, measuredHeight - pcRadius)
             }
-
-            // Ensure angle stays in valid range (0 to 360 degrees)
             particle.angle = (particle.angle + 360) % 360
         }
     }
@@ -97,7 +112,7 @@ class Particle(context: Context, attrs: AttributeSet? = null) : View(context, at
         super.onDraw(canvas)
         for (particle in particles) {
             paint.color = particle.color
-            canvas.drawCircle(particle.x, particle.y, particleRadius, paint)
+            canvas.drawCircle(particle.x, particle.y, pcRadius, paint)
         }
     }
 
@@ -106,6 +121,40 @@ class Particle(context: Context, attrs: AttributeSet? = null) : View(context, at
         animator.cancel() // Stop the animator when the view is detached
     }
 
+    fun setBrightColor(color: Int) {
+        pcBrightColor = color
+        regenerateParticles()
+    }
+
+    fun setLightColor(color: Int) {
+        pcLightColor = color
+        regenerateParticles()
+    }
+
+    fun setParticleCount(count: Int) {
+        pcCount = count
+        regenerateParticles()
+    }
+
+    fun setParticleRadius(radius: Float) {
+        pcRadius = radius
+        regenerateParticles()
+    }
+
+
+    // Helper methods to regenerate particles and restart animation
+    private fun regenerateParticles() {
+        particles.clear()
+        generateParticles()
+        invalidate()
+    }
+
+    private fun restartAnimation() {
+        animator.cancel()
+        startAnimation()
+    }
+
+    // Data class to represent a particle
     private data class ParticleData(
         var x: Float, // Current x position
         var y: Float, // Current y position
