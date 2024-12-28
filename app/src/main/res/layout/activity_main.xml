@@ -24,7 +24,7 @@
     <com.example.customloaders.LineSpinnerView
         android:id="@+id/lineSpinnerView"
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_marginTop="176dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
@@ -38,11 +38,10 @@
     <com.example.customloaders.TailChaseSpinner
         android:id="@+id/tailChaseSpinner"
         android:layout_width="100dp"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="68dp"
-        android:layout_marginBottom="268dp"
-        app:layout_constraintBottom_toTopOf="@+id/threeDotsPyramid2"
+        android:layout_marginEnd="212dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tsDotColor="#F44336"
@@ -72,5 +71,16 @@
         android:layout_marginBottom="104dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.example.customloaders.Particle
+        android:id="@+id/particle6"
+        android:layout_width="56dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tailChaseSpinner"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
