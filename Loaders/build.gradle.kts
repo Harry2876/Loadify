@@ -47,10 +47,10 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
-    implementation(libs.gradle.simple)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
 afterEvaluate {
     publishing {
         publications {
@@ -60,7 +60,7 @@ afterEvaluate {
 
                 groupId = "com.github.Harry2876"
                 artifactId = "EzyLoaders"
-                version = "1.0.0"
+                version = "1.0.2"
 
 
 
@@ -94,3 +94,4 @@ afterEvaluate {
         }
     }
 }
+
