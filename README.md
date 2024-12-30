@@ -61,7 +61,7 @@ Below are the available loaders with their respective attributes:
 ### 1. CircularLoaderView
 
 ```xml
-<com.example.ui.CircularLoaderView
+<com.hariomharsh.loaders.ui.CircularLoaderView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:circle_color="@color/primaryColor"
