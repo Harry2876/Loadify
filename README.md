@@ -22,7 +22,117 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 Add the following dependency to your app's `build.gradle` file:
 
 ```gradle
-implementation 'com.example:ui-loader-balls:1.0.0'
+implementation 'com.example:ui-loader-balls:$version'
+
+
+### Step 2: Sync Gradle
+
+Sync your Gradle project to ensure the library is added.
+
+## Usage
+
+### XML Integration
+
+Include any loader view in your layout XML file. Each loader style comes with customizable attributes for easy configuration.
+
+### Available Loaders and Attributes
+
+Below are the available loaders with their respective attributes:
+
+### 1. CircularLoaderView
+
+```xml
+<com.example.ui.CircularLoaderView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:circle_color="@color/primaryColor"
+    app:circle_size="48dp"
+    app:circle_speed="150"
+    app:circle_stroke="4dp" />
+```
+
+**Attributes:**
+
+- `circle_color`: Sets the color of the circle.
+- `circle_size`: Defines the size of the circle.
+- `circle_speed`: Adjusts the animation speed.
+- `circle_stroke`: Specifies the thickness of the circle stroke.
+
+### 2. LineSpinnerView
+
+```xml
+<com.example.ui.LineSpinnerView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:line_color="@color/secondaryColor"
+    app:line_size="64dp"
+    app:line_stroke="3dp"
+    app:line_speed="200" />
+```
+
+**Attributes:**
+
+- `line_color`: Sets the color of the spinner lines.
+- `line_size`: Defines the overall size of the spinner.
+- `line_stroke`: Adjusts the thickness of the lines.
+- `line_speed`: Controls the animation speed.
+
+### 3. TailChaseSpinner
+
+```xml
+<com.example.ui.TailChaseSpinner
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:spinner_color="@color/accentColor"
+    app:spinner_size="50dp"
+    app:spinner_dot_size="1.5" />
+```
+
+**Attributes:**
+
+- `spinner_color`: Specifies the color of the tail spinner.
+- `spinner_size`: Defines the size of the spinner.
+- `spinner_dot_size`: Sets the size of the dots.
+
+### 4. ThreeDotsPyramid
+
+```xml
+<com.example.ui.ThreeDotsPyramid
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:pyramid_color="@color/primaryDarkColor"
+    app:pyramid_size="60dp" />
+```
+
+**Attributes:**
+
+- `pyramid_color`: Sets the color of the pyramid dots.
+- `pyramid_size`: Defines the size of the pyramid.
+
+### 5. DotPulse
+
+```xml
+<com.example.ui.DotPulse
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:dot_color="@color/highlightColor"
+    app:dot_size="12dp"
+    app:dot_spacing="8dp"
+    app:dot_count="3"
+    app:dot_speed="300" />
+```
+
+**Attributes:**
+
+- `dot_color`: Sets the color of the dots.
+- `dot_size`: Specifies the size of the dots.
+- `dot_spacing`: Adjusts the spacing between dots.
+- `dot_count`: Defines the number of dots.
+- `dot_speed`: Controls the speed of the animation.
+
+## Author
+
+Developed and maintained by Hariom Harsh
 
 
 ## License
