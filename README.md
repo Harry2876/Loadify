@@ -1,4 +1,5 @@
 # EzyLoaders - Android UI Loader Balls Library
+---
 
 ## Overview
 
@@ -13,7 +14,22 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 
 ## Badges
 
-![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/EzyLoaders)
+![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/EzyLoaders) ![Stars](https://img.shields.io/github/stars/Harry2876/EzyLoaders?style=social) ![Forks](https://img.shields.io/github/forks/Harry2876/EzyLoaders?style=social)
+
+
+### Features
+- 🚀 **Customizable Views**: Adjust color, size, speed, and other attributes to fit your design.
+- 🎨 **Easy Integration**: Add loaders directly in XML with minimal setup.
+- 🛠️ **Lightweight**: Optimized for performance.
+
+
+| Feature               | UI Loader Balls | Default ProgressBar | Other Libraries |
+|-----------------------|-----------------|---------------------|-----------------|
+| Customizable          | ✅              | ❌                  | ✅              |
+| Multiple Loaders      | ✅              | ❌                  | ✅              |
+| Lightweight           | ✅              | ✅                  | ❌              |
+
+---
 
 ## Installation
 
@@ -29,6 +45,8 @@ implementation("com.github.Harry2876:EzyLoaders:1.0.1")
 ### Step 2: Sync Gradle
 
 Sync your Gradle project to ensure the library is added.
+
+---
 
 ## Usage
 
@@ -131,9 +149,20 @@ Below are the available loaders with their respective attributes:
 - `dot_count`: Defines the number of dots.
 - `dot_speed`: Controls the speed of the animation.
 
+---
+
 ## Author
 
 Developed and maintained by Hariom Harsh
+
+## FAQ
+**Q: Is this library compatible with older Android versions?**  
+A: Yes, it supports Android API 21+.
+
+**Q: Can I use this with Jetpack Compose?**  
+A: Not yet, but Compose support is planned for future releases.
+
+---
 
 
 ## License
