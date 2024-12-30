@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.customloaders.ui
+package com.hariomharsh.loaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -23,7 +23,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.example.customloaders.R
+import com.hariomharsh.loaders.R
+
 
 class TailChaseSpinner @JvmOverloads constructor(
     context: Context,

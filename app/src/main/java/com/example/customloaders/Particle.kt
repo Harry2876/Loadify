@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.customloaders.ui
+package com.example.customloaders
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -22,7 +22,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.example.customloaders.R
 import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sin

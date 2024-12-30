@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.customloaders.ui
+package com.hariomharsh.loaders.ui
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -24,7 +24,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
-import com.example.customloaders.R
+import com.hariomharsh.loaders.R
+
 
 class ThreeDotsPyramid @JvmOverloads constructor(
     context: Context,

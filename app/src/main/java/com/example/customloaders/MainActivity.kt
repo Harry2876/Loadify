@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.example.customloaders.ui
+package com.example.customloaders
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.customloaders.R
 import com.example.customloaders.data.model.LoaderItem
 import com.example.customloaders.databinding.ActivityMainBinding
-import com.example.customloaders.ui.adapter.LoaderAdapter
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,40 +44,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         //setting up loaders data
-        val loaderList = listOf(
-            LoaderItem("Circular Loader", CircularLoaderView(this).apply {
-                setCircleColor(Color.BLUE)
-                setCircleSize(150f)
-                setCircleStroke(16f)
-                setCircleSpeed(600)
-            }),
-            LoaderItem("Line Spinner", LineSpinnerView(this).apply {
-                setLoaderColor(Color.BLUE)
-                setLoaderSize(100f)
-                setLoaderStroke(10f)
-                setLoaderSpeed(500)
-            }),
-            LoaderItem("Tail Chase Spinner", TailChaseSpinner(this).apply {
-                setSpinnerColor(Color.GREEN)
-                setDotSize(0.2f)
-                setSpinnerSize(120f)
-            }),
-            LoaderItem("Three Dots Pyramid", ThreeDotsPyramid(this).apply {
-                setDotColor(Color.GREEN)
-                setPyramidSize(200f)
-            }),
-            LoaderItem("Dot Pulse", DotPulse(this).apply {
-                setDotColor(Color.MAGENTA)
-                setDotCount(3)
-                setDotSize(30f)
-                setDotSpacing(2f)
-            }),
-        )
-
-        //setting up the recycler view
-        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
-        binding.recyclerView.adapter = LoaderAdapter(loaderList)
-
-
+//        val loaderList = listOf(
+//            LoaderItem("Circular Loader", com.android.ezy_loader.ui.CircularLoaderView(this).apply {
+//                setCircleColor(Color.BLUE)
+//                setCircleSize(150f)
+//                setCircleStroke(16f)
+//                setCircleSpeed(600)
+//            }),
+//            LoaderItem("Line Spinner", com.android.ezy_loader.ui.LineSpinnerView(this).apply {
+//                setLoaderColor(Color.BLUE)
+//                setLoaderSize(100f)
+//                setLoaderStroke(10f)
+//                setLoaderSpeed(500)
+//            }),
+//            LoaderItem("Tail Chase Spinner", com.android.ezy_loader.ui.TailChaseSpinner(this).apply {
+//                setSpinnerColor(Color.GREEN)
+//                setDotSize(0.2f)
+//                setSpinnerSize(120f)
+//            }),
+//            LoaderItem("Three Dots Pyramid", com.android.ezy_loader.ui.ThreeDotsPyramid(this).apply {
+//                setDotColor(Color.GREEN)
+//                setPyramidSize(200f)
+//            }),
+//            LoaderItem("Dot Pulse", com.android.ezy_loader.ui.DotPulse(this).apply {
+//                setDotColor(Color.MAGENTA)
+//                setDotCount(3)
+//                setDotSize(30f)
+//                setDotSpacing(2f)
+//            }),
+//        )
+//
+//        //setting up the recycler view
+//        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
+//        binding.recyclerView.adapter = LoaderAdapter(loaderList)
+//
+//
     }
 }

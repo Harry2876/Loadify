@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Custom Loaders"
 include(":app")
+include(":Loaders")

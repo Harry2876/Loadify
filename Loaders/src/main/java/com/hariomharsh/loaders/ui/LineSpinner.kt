@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.customloaders.ui
+package com.hariomharsh.loaders.ui
 
 import android.content.Context
 import android.graphics.*
@@ -22,7 +22,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.animation.ValueAnimator
 import android.view.animation.LinearInterpolator
-import com.example.customloaders.R
+import com.hariomharsh.loaders.R
+
 
 class LineSpinnerView @JvmOverloads constructor(
     context: Context,
