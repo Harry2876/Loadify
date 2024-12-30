@@ -22,7 +22,7 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 Add the following dependency to your app's `build.gradle` file:
 
 ```gradle
-implementation 'com.example:ui-loader-balls:$version'
+implementation("com.github.Harry2876:EzyLoaders:1.0.1")
 ```
 
 
