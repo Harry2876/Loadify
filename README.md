@@ -80,7 +80,7 @@ Below are the available loaders with their respective attributes:
 ### 2. LineSpinnerView
 
 ```xml
-<com.example.ui.LineSpinnerView
+<com.hariomharsh.loaders.ui.LineSpinnerView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:line_color="@color/secondaryColor"
@@ -99,7 +99,7 @@ Below are the available loaders with their respective attributes:
 ### 3. TailChaseSpinner
 
 ```xml
-<com.example.ui.TailChaseSpinner
+<com.hariomharsh.loaders.ui.TailChaseSpinner
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:spinner_color="@color/accentColor"
@@ -116,7 +116,7 @@ Below are the available loaders with their respective attributes:
 ### 4. ThreeDotsPyramid
 
 ```xml
-<com.example.ui.ThreeDotsPyramid
+<com.hariomharsh.loaders.ui.ThreeDotsPyramid
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:pyramid_color="@color/primaryDarkColor"
@@ -131,7 +131,7 @@ Below are the available loaders with their respective attributes:
 ### 5. DotPulse
 
 ```xml
-<com.example.ui.DotPulse
+<com.hariomharsh.loaders.ui.DotPulse
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:dot_color="@color/highlightColor"
