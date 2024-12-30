@@ -5,6 +5,7 @@ plugins {
     id("signing")
 }
 
+
 android {
     namespace = "com.hariomharsh.loaders"
     compileSdk = 34
@@ -46,6 +47,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
+    implementation(libs.gradle.simple)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

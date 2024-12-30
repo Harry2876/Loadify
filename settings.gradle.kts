@@ -16,9 +16,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-    }
+        maven {
+            url = uri("https://jitpack.io")
+            content {
+                includeGroup("com.github.Harry2876")
+            }
+        }
 }
 
 rootProject.name = "Custom Loaders"
 include(":app")
-include(":Loaders")
+include(":Loaders") }
