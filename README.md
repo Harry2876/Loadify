@@ -13,7 +13,7 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 
 ## Badges
 
-![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/yourusername/ui-loader-balls)
+![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/EzyLoaders)
 
 ## Installation
 
@@ -23,6 +23,7 @@ Add the following dependency to your app's `build.gradle` file:
 
 ```gradle
 implementation 'com.example:ui-loader-balls:$version'
+```
 
 
 ### Step 2: Sync Gradle
