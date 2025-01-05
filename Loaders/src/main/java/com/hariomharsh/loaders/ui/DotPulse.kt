@@ -40,7 +40,7 @@ class DotPulse @JvmOverloads constructor(
     private var dpDotsNum = 3 // Number of dots
     private var dpSpeed = 400L // Duration of the pulse animation in milliseconds
 
-    private lateinit var dotScales: FloatArray // Scale for each dot
+    private var dotScales: FloatArray // Scale for each dot
     private val dotAnimators = mutableListOf<ValueAnimator>() // List of animators for each dot
 
     init {
