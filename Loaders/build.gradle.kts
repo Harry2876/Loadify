@@ -61,7 +61,7 @@ afterEvaluate {
 
                 groupId = "com.github.Harry2876"
                 artifactId = "Loadify"
-                version = "1.0.3"
+                version = "1.0.4"
 
 
 
