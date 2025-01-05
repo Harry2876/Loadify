@@ -60,15 +60,15 @@ afterEvaluate {
 
 
                 groupId = "com.github.Harry2876"
-                artifactId = "EzyLoaders"
-                version = "1.0.2"
+                artifactId = "Loadify"
+                version = "1.0.3"
 
 
 
                 pom {
-                    name.set("Ezy Loaders")
+                    name.set("Loadify")
                     description.set("A library for custom loaders in Android.")
-                    url.set("https://github.com/Harry2876/Ui-Loader-Balls.git")
+                    url.set("https://github.com/Harry2876/Loadify")
 
                     licenses {
                         license {
@@ -86,9 +86,9 @@ afterEvaluate {
                     }
 
                     scm {
-                        connection.set("scm:git:git://github.com/Harry2876/Ui-Loader-Balls.git")
-                        developerConnection.set("scm:git:ssh://github.com/Harry2876/Ui-Loader-Balls.git")
-                        url.set("https://github.com/Harry2876/Ui-Loader-Balls.git")
+                        connection.set("scm:git:git://github.com/Harry2876/Loadify")
+                        developerConnection.set("scm:git:ssh://github.com/Harry2876/Loadify")
+                        url.set("https://github.com/Harry2876/Loadify")
                     }
                 }
             }
