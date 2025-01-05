@@ -1,6 +1,7 @@
 [versions]
 agp = "8.7.3"
 ezyloaders = "1.0.0"
+ezyloadersVersion = "1.0.2"
 gradleSimple = "master-SNAPSHOT"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
@@ -15,6 +16,7 @@ constraintlayout = "2.2.0"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 ezyloaders = { module = "com.github.Harry2876:EzyLoaders", version.ref = "ezyloaders" }
+ezyloaders-v102 = { module = "com.github.Harry2876:EzyLoaders", version.ref = "ezyloadersVersion" }
 gradle-simple = { module = "com.github.jitpack:gradle-simple", version.ref = "gradleSimple" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
