@@ -5,12 +5,11 @@
 
 The **Android UI Loader Balls Library** is a versatile and highly customizable library designed to provide developers with sleek, animated UI loader views for Android applications. With a variety of pre-designed loader views, developers can integrate visually appealing loading indicators seamlessly into their projects.
 
-![CircularLoaderView](https://github.com/user-attachments/assets/2d8608fa-ed61-45af-b38a-0721af3a6c83)
-![DotPulse](https://github.com/user-attachments/assets/fa72b31a-9b89-4c30-bac1-a54b3b922b92)
-![TailChase](https://github.com/user-attachments/assets/278d7ebd-3edc-4233-9e2a-9c7f4e55353a)
-![ThreeDotsPyramid](https://github.com/user-attachments/assets/b4c52e97-4499-462e-8597-660e2181149b)
-![Line](https://github.com/user-attachments/assets/60f41fd6-0bf1-47dd-992f-e229d8c76c1d)
-
+<img src="https://github.com/user-attachments/assets/fa72b31a-9b89-4c30-bac1-a54b3b922b92" alt="drawing" width="100"/>
+<img src="https://github.com/user-attachments/assets/2d8608fa-ed61-45af-b38a-0721af3a6c83" alt="drawing" width="100"/>
+<img src="https://github.com/user-attachments/assets/278d7ebd-3edc-4233-9e2a-9c7f4e55353a" alt="drawing" width="100"/>
+<img src="https://github.com/user-attachments/assets/b4c52e97-4499-462e-8597-660e2181149b" alt="drawing" width="100"/>
+<img src="https://github.com/user-attachments/assets/60f41fd6-0bf1-47dd-992f-e229d8c76c1d" alt="drawing" width="100"/>
 
 
 ### Features
