@@ -11,37 +11,146 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fffcf2"
+        android:background="#FFFEF7"
         tools:context=".MainActivity">
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="35dp"-->
-<!--            android:layout_marginBottom="246dp"-->
-<!--            android:text="Android Loader Balls"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="25sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/dotPulse"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <com.hariomharsh.loaders.ui.CircularLoaderView
+            android:id="@+id/circularLoaderView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="111dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="85dp"
+            app:circle_color="@color/purple_500"
+            app:circle_size="48dp"
+            app:circle_speed="800"
+            app:circle_stroke="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/tailChaseSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/dotPulse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Name Text below CircularLoaderView -->
+        <TextView
+            android:id="@+id/nameCircularLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Circular Loader"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@+id/circularLoaderView"
+            app:layout_constraintStart_toStartOf="@+id/circularLoaderView"
+            app:layout_constraintEnd_toEndOf="@+id/circularLoaderView"
+            android:layout_marginTop="8dp"/>
 
-<!--        <com.hariomharsh.loaders.ui.ThreeDotsPyramid-->
-<!--            android:id="@+id/dotPulse"-->
-<!--            android:layout_width="215dp"-->
-<!--            android:layout_height="182dp"-->
-<!--            android:layout_marginEnd="96dp"-->
-<!--            android:layout_marginBottom="316dp"-->
-<!--            app:pyramid_color="@color/black"-->
-<!--            app:pyramid_size="90dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+        <com.hariomharsh.loaders.ui.LineSpinnerView
+            android:id="@+id/dotPulse"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="111dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="85dp"
+            app:layout_constraintBottom_toTopOf="@+id/threeDotsPyramid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/circularLoaderView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:line_color="@color/purple_500" />
 
+        <!-- Name Text below DotPulse -->
+        <TextView
+            android:id="@+id/nameDotPulse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line Spinner"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@+id/dotPulse"
+            app:layout_constraintStart_toStartOf="@+id/dotPulse"
+            app:layout_constraintEnd_toEndOf="@+id/dotPulse"
+            android:layout_marginTop="8dp"/>
+
+        <com.hariomharsh.loaders.ui.TailChaseSpinner
+            android:id="@+id/tailChaseSpinner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="54dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="335dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/circularLoaderView"
+            app:layout_constraintEnd_toStartOf="@+id/threeDotsPyramid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circularLoaderView"
+            app:spinner_color="@color/purple_500"
+            app:spinner_dot_size="0.3"
+            app:spinner_size="50dp" />
+
+        <!-- Name Text below TailChaseSpinner -->
+        <TextView
+            android:id="@+id/nameTailChaseSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tail Chase Spinner"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@+id/tailChaseSpinner"
+            app:layout_constraintStart_toStartOf="@+id/tailChaseSpinner"
+            app:layout_constraintEnd_toEndOf="@+id/tailChaseSpinner"
+            android:layout_marginTop="8dp"/>
+
+        <com.hariomharsh.loaders.ui.ThreeDotsPyramid
+            android:id="@+id/threeDotsPyramid"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="335dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tailChaseSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/dotPulse"
+            app:pyramid_color="@color/purple_500"
+            app:pyramid_size="60dp" />
+
+        <!-- Name Text below ThreeDotsPyramid -->
+        <TextView
+            android:id="@+id/nameThreeDotsPyramid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Three Dots Pyramid"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@+id/threeDotsPyramid"
+            app:layout_constraintStart_toStartOf="@+id/threeDotsPyramid"
+            app:layout_constraintEnd_toEndOf="@+id/threeDotsPyramid"
+            android:layout_marginTop="8dp"/>
+
+        <com.hariomharsh.loaders.ui.DotPulse
+            android:id="@+id/dotPulse2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="9dp"
+            app:dot_color="@color/purple_500"
+            app:dot_count="3"
+            app:dot_size="12dp"
+            app:dot_spacing="8dp"
+            app:dot_speed="300"
+            app:layout_constraintEnd_toStartOf="@+id/threeDotsPyramid"
+            app:layout_constraintTop_toBottomOf="@+id/threeDotsPyramid" />
+
+        <!-- Name Text below DotPulse2 -->
+        <TextView
+            android:id="@+id/nameDotPulse2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dot Pulse"
+            android:textSize="14sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintTop_toBottomOf="@+id/dotPulse2"
+            app:layout_constraintStart_toStartOf="@+id/dotPulse2"
+            app:layout_constraintEnd_toEndOf="@+id/dotPulse2"
+            android:layout_marginTop="8dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
