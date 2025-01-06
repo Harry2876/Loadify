@@ -21,7 +21,7 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 
 ## Badges
 
-![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/EzyLoaders) ![Stars](https://img.shields.io/github/stars/Harry2876/EzyLoaders?style=social) ![Forks](https://img.shields.io/github/forks/Harry2876/EzyLoaders?style=social)
+![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.6-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/Loadify) ![Stars](https://img.shields.io/github/stars/Harry2876/Loadify?style=social) ![Forks](https://img.shields.io/github/forks/Harry2876/Loadify?style=social)
 
 
 ### Features
