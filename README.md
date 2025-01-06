@@ -1,9 +1,26 @@
 # EzyLoaders - Android UI Loader Balls Library
+
+---
+
+🎉 **All Documentation is Now Live!**  
+🚀 Explore detailed usage, guides, and examples at the official documentation site:  
+
+📖 **[Documentation](https://loadify-docs.vercel.app/)** – Start integrating loaders with just a few steps!  
+
+[![View Documentation](https://github.com/user-attachments/assets/4ab92de0-7ac1-48b0-99a6-1ba0bf67eb33)](https://loadify-docs.vercel.app/)
+
+## 📝 Why Visit Our Docs?
+
+- **Detailed Guides**: Step-by-step tutorials for every feature.
+- **Live Examples**: See loaders in action.
+- **Customizations**: Tailor loaders to match your app's design.
+
 ---
 
 ## Overview
 
 The **Android UI Loader Balls Library** is a versatile and highly customizable library designed to provide developers with sleek, animated UI loader views for Android applications. With a variety of pre-designed loader views, developers can integrate visually appealing loading indicators seamlessly into their projects.
+
 
 ### Features
 
@@ -14,7 +31,7 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 
 ## Badges
 
-![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.2-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/EzyLoaders) ![Stars](https://img.shields.io/github/stars/Harry2876/EzyLoaders?style=social) ![Forks](https://img.shields.io/github/forks/Harry2876/EzyLoaders?style=social)
+![Jetpack Version](https://img.shields.io/badge/Jetpack-1.0.6-brightgreen) ![License](https://img.shields.io/badge/License-Apache%202.0-blue) ![Languages](https://img.shields.io/github/languages/top/Harry2876/Loadify) ![Stars](https://img.shields.io/github/stars/Harry2876/Loadify?style=social) ![Forks](https://img.shields.io/github/forks/Harry2876/Loadify?style=social)
 
 
 ### Features
@@ -38,7 +55,7 @@ The **Android UI Loader Balls Library** is a versatile and highly customizable l
 Add the following dependency to your app's `build.gradle` file:
 
 ```gradle
-implementation("com.github.Harry2876:EzyLoaders:$version")
+implementation("com.github.Harry2876:Loadify:$version")
 ```
 
 
@@ -48,122 +65,11 @@ Sync your Gradle project to ensure the library is added.
 
 ---
 
-## Usage
-
-### XML Integration
-
-Include any loader view in your layout XML file. Each loader style comes with customizable attributes for easy configuration.
-
-### Available Loaders and Attributes
-
-Below are the available loaders with their respective attributes:
-
-### 1. CircularLoaderView
-
-```xml
-<com.hariomharsh.loaders.ui.CircularLoaderView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:circle_color="@color/primaryColor"
-    app:circle_size="48dp"
-    app:circle_speed="150"
-    app:circle_stroke="4dp" />
-```
-
-**Attributes:**
-
-- `circle_color`: Sets the color of the circle.
-- `circle_size`: Defines the size of the circle.
-- `circle_speed`: Adjusts the animation speed.
-- `circle_stroke`: Specifies the thickness of the circle stroke.
-
-### 2. LineSpinnerView
-
-```xml
-<com.hariomharsh.loaders.ui.LineSpinnerView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:line_color="@color/secondaryColor"
-    app:line_size="64dp"
-    app:line_stroke="3dp"
-    app:line_speed="200" />
-```
-
-**Attributes:**
-
-- `line_color`: Sets the color of the spinner lines.
-- `line_size`: Defines the overall size of the spinner.
-- `line_stroke`: Adjusts the thickness of the lines.
-- `line_speed`: Controls the animation speed.
-
-### 3. TailChaseSpinner
-
-```xml
-<com.hariomharsh.loaders.ui.TailChaseSpinner
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:spinner_color="@color/accentColor"
-    app:spinner_size="50dp"
-    app:spinner_dot_size="1.5" />
-```
-
-**Attributes:**
-
-- `spinner_color`: Specifies the color of the tail spinner.
-- `spinner_size`: Defines the size of the spinner.
-- `spinner_dot_size`: Sets the size of the dots.
-
-### 4. ThreeDotsPyramid
-
-```xml
-<com.hariomharsh.loaders.ui.ThreeDotsPyramid
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:pyramid_color="@color/primaryDarkColor"
-    app:pyramid_size="60dp" />
-```
-
-**Attributes:**
-
-- `pyramid_color`: Sets the color of the pyramid dots.
-- `pyramid_size`: Defines the size of the pyramid.
-
-### 5. DotPulse
-
-```xml
-<com.hariomharsh.loaders.ui.DotPulse
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:dot_color="@color/highlightColor"
-    app:dot_size="12dp"
-    app:dot_spacing="8dp"
-    app:dot_count="3"
-    app:dot_speed="300" />
-```
-
-**Attributes:**
-
-- `dot_color`: Sets the color of the dots.
-- `dot_size`: Specifies the size of the dots.
-- `dot_spacing`: Adjusts the spacing between dots.
-- `dot_count`: Defines the number of dots.
-- `dot_speed`: Controls the speed of the animation.
+## 👨‍💻 Author
+> [**Hariom Harsh**](https://github.com/Harry2876)  
+> Android App Developer & UI Designer  
 
 ---
-
-## Author
-
-Developed and maintained by Hariom Harsh
-
-## FAQ
-**Q: Is this library compatible with older Android versions?**  
-A: Yes, it supports Android API 21+.
-
-**Q: Can I use this with Jetpack Compose?**  
-A: Not yet, but Compose support is planned for future releases.
-
----
-
 
 ## License
 Copyright 2024 Hariom Harsh
