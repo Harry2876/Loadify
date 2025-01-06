@@ -57,6 +57,10 @@ Add the following dependency to your app's `build.gradle` file:
 ```gradle
 implementation("com.github.Harry2876:Loadify:$version")
 ```
+for Example
+```gradle
+implementation("com.github.Harry2876:Loadify:v1.0.6")
+```
 
 
 ### Step 2: Sync Gradle
